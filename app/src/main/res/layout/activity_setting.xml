@@ -16,10 +16,10 @@
         android:text="Hello World!" />
 
     <Button
-        android:text="Setting"
+        android:text="Sensors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/setting_button" />
+        android:id="@+id/sensors_button"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">HOPE: Sports Assistant</string>
+    <string name="app_name">HOPE: Fitness Assistant</string>
     <string name="ble_not_supported">Bluetooth LE is not supported</string>
     <string name="label_data">Data:</string>
         <string name="label_heartrate">Heart rate:</string>
