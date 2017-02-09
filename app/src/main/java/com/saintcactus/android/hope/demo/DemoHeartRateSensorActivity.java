@@ -1,5 +1,6 @@
 package com.saintcactus.android.hope.demo;
 
+import android.content.Intent;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 import android.os.Bundle;
@@ -61,7 +62,6 @@ public class DemoHeartRateSensorActivity extends DemoSensorActivity {
 			float[] values = heartSensor.getData();
 			renderer.setInterval(values);
 			view.requestRender();
-
 			viewText.setText(text);
 		}
 	}

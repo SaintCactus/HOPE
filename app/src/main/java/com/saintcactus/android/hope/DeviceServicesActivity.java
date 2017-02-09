@@ -223,7 +223,8 @@ public class DeviceServicesActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.gatt_services_characteristics);
+        setContentView(R.layout.activity_desktop);
+        //setContentView(R.layout.gatt_services_characteristics);
 
         final Intent intent = getIntent();
         deviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
@@ -235,7 +236,7 @@ public class DeviceServicesActivity extends Activity {
         gattServicesList.setOnChildClickListener(servicesListClickListner);
         connectionState = (TextView) findViewById(R.id.connection_state);
         dataField = (TextView) findViewById(R.id.data_value);
-		heartRateField = (TextView) findViewById(R.id.heartrate_value);
+		heartRateField = (TextView) findViewById(R.id.big_heart_rate);
 
 		demoButton = (Button) findViewById(R.id.demo);
 
@@ -251,10 +252,10 @@ public class DeviceServicesActivity extends Activity {
 			}
 		});
 
-		demoButton.setVisibility(View.VISIBLE);
+		demoButton.setVisibility(View.GONE);
         
-        getActionBar().setTitle(deviceName);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        //getActionBar().setTitle(deviceName);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         final Intent gattServiceIntent = new Intent(this, BleService.class);
         bindService(gattServiceIntent, serviceConnection, BIND_AUTO_CREATE);
@@ -325,6 +326,7 @@ public class DeviceServicesActivity extends Activity {
 		if (data != null) {
 			if (uuid.equals(BleHeartRateSensor.getServiceUUIDString())) {
 				heartRateField.setText(data);
+
 			} else {
 				dataField.setText(data);
 			}

@@ -4,7 +4,7 @@ package com.saintcactus.android.hope.sensor;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.util.Log;
 
-import static java.lang.Math.pow;
+import com.saintcactus.android.hope.desktopFrame;
 
 /**
  * Created by  by olli on 3/28/2014.
@@ -24,14 +24,16 @@ public class BleHeartRateSensor extends BleSensor<float[]> {
     private static final int SENSOR_BODY_LOCATION_FOOT = 6;
     
     private int location = -1;
-    
+
+	public static HeartRateData currentHeartRate;
+
 	BleHeartRateSensor() {
 		super();
+		currentHeartRate = new HeartRateData();
 	}
 
 	@Override
-	public String getName() {
-		return "Heart rate";
+	public String getName() {return "Heart rate";
 	}
 
 	@Override
@@ -81,7 +83,8 @@ public class BleHeartRateSensor extends BleSensor<float[]> {
 	@Override
 	public String getDataString() {
 		final float[] data = getData();
-		return "heart rate=" + data[0] + "\ninterval=" + data[1];
+		return "" + Math.round(data[0]);
+		//return "heart rate=" + data[0] + "\ninterval=" + data[1];
 	}
 
 	@Override
@@ -106,7 +109,7 @@ public class BleHeartRateSensor extends BleSensor<float[]> {
 				result[i+1] = interval[i].floatValue();
 			}
 		}
-		
+		Log.d("DEBUGG", String.format("" + heartRate));
 		return result;
 	}
 
@@ -212,6 +215,16 @@ public class BleHeartRateSensor extends BleSensor<float[]> {
         return null;
 	}
 
+	public class HeartRateData {
+		private String data = "0.0";
 
+		public String getData() {
+			return this.data;
+		}
+
+		public void setData(String data) {
+			this.data=data;
+		}
+	}
 
 }

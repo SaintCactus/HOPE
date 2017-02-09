@@ -13,13 +13,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="---"
+        android:id="@+id/heartrate_test" />
 
     <Button
-        android:text="Sensors"
+        android:text="Setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/sensors_button"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/setting_button" />
 </RelativeLayout>
