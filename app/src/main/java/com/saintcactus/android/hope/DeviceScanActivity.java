@@ -30,6 +30,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -59,6 +60,16 @@ public class DeviceScanActivity extends ListActivity {
             finish();
             return;
         }
+
+        /*final Button btnSetting = (Button) findViewById(R.id.demo_sensor);
+
+        btnSetting.setOnClickListener(new View.OnClickListener(){
+                                          public void onClick(View v) {
+          Intent intent = new Intent("android.intent.action.scan");
+          startActivity(intent);
+      }
+  }
+        );*/
 
         // Initializes a Bluetooth adapter.  For API level 18 and above, get a reference to
         // BluetoothAdapter through BluetoothManager.

@@ -19,15 +19,23 @@ public class desktopFrame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_empty_desktop);
 
-        hr= (TextView) findViewById(R.id.heartrate_test);
+        final Button btnRoom = (Button) findViewById(R.id.dev_room);
         final Button btnSetting = (Button) findViewById(R.id.setting_button);
 
         btnSetting.setOnClickListener(new View.OnClickListener(){
-          public void onClick(View v) {
-              Intent intent = new Intent("android.intent.action.setting");
-              startActivity(intent);
-          }
-          }
+                                          public void onClick(View v) {
+                                              Intent intent = new Intent("android.intent.action.setting");
+                                              startActivity(intent);
+                                          }
+                                      }
+        );
+
+        btnRoom.setOnClickListener(new View.OnClickListener(){
+                                          public void onClick(View v) {
+                                              Intent intent = new Intent("android.intent.action.devroom");
+                                              startActivity(intent);
+                                          }
+                                      }
         );
     }
 }

@@ -33,6 +33,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
@@ -78,6 +79,8 @@ public class DeviceServicesActivity extends Activity {
     private BleSensor<?> heartRateSensor;
     
 	private OnServiceItemClickListener serviceListener;
+
+    private ImageView mImageView;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection serviceConnection = new ServiceConnection() {
@@ -229,6 +232,10 @@ public class DeviceServicesActivity extends Activity {
         final Intent intent = getIntent();
         deviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         deviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
+
+        mImageView = (ImageView) findViewById(R.id.sector_test);
+        mImageView.setImageResource(R.drawable.sector_test);
+
 
         // Sets up UI references.
         ((TextView) findViewById(R.id.device_address)).setText(deviceAddress);
