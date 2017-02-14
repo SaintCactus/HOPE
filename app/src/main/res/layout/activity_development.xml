@@ -20,7 +20,7 @@
     android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#3C2F3A"
+        android:background="#27252e"
         android:paddingTop="10dp">
     <LinearLayout
             android:orientation="horizontal"
@@ -149,16 +149,80 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="22dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/sector_test"
-        android:id="@+id/sector_test"
-        android:visibility="visible"
-        android:scaleType="matrix"
-        android:scaleX="1.4"
-        android:scaleY="1.4"
-        android:layout_below="@+id/big_heart_rate"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/heart_rate_zones">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/none_a"
+            android:id="@+id/sector_none"
+            android:visibility="visible"
+            android:scaleType="matrix"
+            android:scaleX="1.0"
+            android:scaleY="1.0"
+            android:layout_marginTop="38dp"
+            android:elevation="1dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/warmup_test"
+            android:textColor="@android:color/white"
+            android:layout_alignBottom="@+id/sector_none"
+            android:layout_alignEnd="@+id/sector_none" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fitness_test"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/sector_none"
+            android:layout_alignStart="@+id/warmup_test" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/endurance_test"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/fitness_test"
+            android:layout_alignStart="@+id/fitness_test" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/perfomance_test"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/endurance_test"
+            android:layout_alignStart="@+id/endurance_test" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/maximum_test"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/perfomance_test"
+            android:layout_alignStart="@+id/perfomance_test" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/current_heart_rate"
+            android:text="60"
+            android:textColor="@android:color/white"
+            android:layout_above="@+id/maximum_test"
+            android:layout_alignStart="@+id/sector_none" />
+
+    </RelativeLayout>
 </RelativeLayout>
