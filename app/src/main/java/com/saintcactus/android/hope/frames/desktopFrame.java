@@ -1,4 +1,4 @@
-package com.saintcactus.android.hope;
+package com.saintcactus.android.hope.frames;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.saintcactus.android.hope.R;
 import com.saintcactus.android.hope.sensor.BleHeartRateSensor;
 
 public class desktopFrame extends AppCompatActivity {

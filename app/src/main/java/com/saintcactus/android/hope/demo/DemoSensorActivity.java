@@ -1,6 +1,6 @@
 package com.saintcactus.android.hope.demo;
 
-import com.saintcactus.android.hope.BleService;
+import com.saintcactus.android.hope.source_frames.BleService;
 import com.saintcactus.android.hope.sensor.BleSensor;
 import com.saintcactus.android.hope.sensor.BleSensors;
 

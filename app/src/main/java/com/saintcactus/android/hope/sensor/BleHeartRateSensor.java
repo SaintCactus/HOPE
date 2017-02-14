@@ -4,8 +4,6 @@ package com.saintcactus.android.hope.sensor;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.util.Log;
 
-import com.saintcactus.android.hope.desktopFrame;
-
 /**
  * Created by  by olli on 3/28/2014.
  */

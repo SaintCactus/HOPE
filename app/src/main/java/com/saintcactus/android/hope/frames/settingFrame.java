@@ -1,4 +1,4 @@
-package com.saintcactus.android.hope;
+package com.saintcactus.android.hope.frames;
 
 import android.Manifest;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.saintcactus.android.hope.R;
 
 public class settingFrame extends AppCompatActivity {
 

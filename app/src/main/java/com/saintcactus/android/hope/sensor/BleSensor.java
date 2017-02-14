@@ -8,7 +8,7 @@ import android.util.Log;
 
 import java.util.UUID;
 
-import com.saintcactus.android.hope.BluetoothGattExecutor;
+import com.saintcactus.android.hope.source_frames.BluetoothGattExecutor;
 
 
 /**

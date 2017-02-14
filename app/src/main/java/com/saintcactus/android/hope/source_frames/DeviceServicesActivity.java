@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.saintcactus.android.hope;
+package com.saintcactus.android.hope.source_frames;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothGattCharacteristic;

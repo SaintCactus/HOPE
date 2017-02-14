@@ -1,4 +1,4 @@
-package com.saintcactus.android.hope;
+package com.saintcactus.android.hope.debugs;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.saintcactus.android.hope.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -115,16 +117,6 @@ public class developmentRoom extends AppCompatActivity {
     {
         if(high == 0) if((origin > low)) heart_rate_zones.setImageResource(resource);
         if((origin >= low) && (origin <= high)) heart_rate_zones.setImageResource(resource);
-    }
-
-    private void countTheSeparators(double start, double end)
-    {
-        for(double i = start; i<=end; i++)
-        {
-            separators++;
-            //Log.d("DEBUGG: ", "" + separators);
-        }
-
     }
 
     private void getProgressBar(int start, int end)

@@ -1,6 +1,6 @@
 package com.saintcactus.android.hope.sensor;
 
-import com.saintcactus.android.hope.BluetoothGattExecutor;
+import com.saintcactus.android.hope.source_frames.BluetoothGattExecutor;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 
