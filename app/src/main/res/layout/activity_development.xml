@@ -68,7 +68,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        android:id="@+id/linearLayout">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,19 +141,10 @@
             android:groupIndicator="@null"
         android:visibility="gone" />
 
-    <TextView
-        android:text="no data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/big_heart_rate"
-        android:textSize="20sp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="22dp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/heart_rate_zones">
+        android:id="@+id/zones_sprites">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -166,52 +158,17 @@
             android:layout_marginTop="38dp"
             android:elevation="1dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+        />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/warmup_test"
-            android:textColor="@android:color/white"
-            android:layout_alignBottom="@+id/sector_none"
-            android:layout_alignEnd="@+id/sector_none" />
+    </RelativeLayout>
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fitness_test"
-            android:textColor="@android:color/white"
-            android:layout_below="@+id/sector_none"
-            android:layout_alignStart="@+id/warmup_test" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/endurance_test"
-            android:textColor="@android:color/white"
-            android:layout_below="@+id/fitness_test"
-            android:layout_alignStart="@+id/fitness_test" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/perfomance_test"
-            android:textColor="@android:color/white"
-            android:layout_below="@+id/endurance_test"
-            android:layout_alignStart="@+id/endurance_test" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/maximum_test"
-            android:textColor="@android:color/white"
-            android:layout_below="@+id/perfomance_test"
-            android:layout_alignStart="@+id/perfomance_test" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/heart_rate_zones"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <EditText
             android:layout_width="wrap_content"
@@ -221,8 +178,65 @@
             android:id="@+id/current_heart_rate"
             android:text="60"
             android:textColor="@android:color/white"
-            android:layout_above="@+id/maximum_test"
-            android:layout_alignStart="@+id/sector_none" />
+            android:layout_above="@+id/maximum_test"/>
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/maximum_test"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="29dp"
+            android:layout_marginBottom="65dp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/perfomance_test"
+            android:textColor="@android:color/white"
+            android:layout_alignTop="@+id/maximum_test"
+            android:layout_alignStart="@+id/maximum_test"
+            android:layout_marginTop="19dp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/endurance_test"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/perfomance_test"
+            android:layout_alignStart="@+id/perfomance_test" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fitness_test"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/endurance_test"
+            android:layout_alignStart="@+id/endurance_test" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/warmup_test"
+            android:textColor="@android:color/white"
+            android:layout_below="@+id/fitness_test"
+            android:layout_alignStart="@+id/fitness_test" />
+
+        <TextView
+            android:text="no data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/big_heart_rate"
+            android:textSize="20sp"
+            android:layout_above="@+id/current_heart_rate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="164dp" />
 
     </RelativeLayout>
 </RelativeLayout>

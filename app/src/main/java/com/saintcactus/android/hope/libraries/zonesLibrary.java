@@ -1,6 +1,12 @@
 package com.saintcactus.android.hope.libraries;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.widget.ImageView;
@@ -14,317 +20,200 @@ import java.util.ArrayList;
  */
 
 public class zonesLibrary {
-    private int age, pickHR, currentZone;
+    private int age, pickHR, currentZone, targetZone;
     private ArrayList<Integer> separatorsArray = new ArrayList<Integer>();
+    private MediaPlayer zoneAudio;
 
     public ArrayList<Integer> getSeparatorsArray() { return this.separatorsArray; }
     public void setAge(int age) { this.age = age; }
+    public double blue_zone_low, blue_zone_high, green_zone_low, green_zone_high, yellow_zone_low, yellow_zone_high, orange_zone_low, orange_zone_high, red_zone_low, red_zone_high;
 
-    //region FILL SEPARATORS
-    private void fillSeparators(ImageView resource, int ID)
+    //region DARK ZONE
+
+    private void darkZone(Paint paint, Canvas canvas, RectF rectF, int endPoint)
     {
-        switch(ID) {
-            case 0:
-                resource.setImageResource(R.drawable.none_a);
-                break;
-            case 1:
-                resource.setImageResource(R.drawable.blue_a);
-                break;
+        switch (targetZone){
             case 2:
-                resource.setImageResource(R.drawable.blue_b);
+                paint.setColor(Color.argb(192, 39, 37, 46));
+                canvas.drawArc(rectF, -90, 72*1, true, paint);
                 break;
             case 3:
-                resource.setImageResource(R.drawable.blue_c);
+                paint.setColor(Color.argb(192, 39, 37, 46));
+                canvas.drawArc(rectF, -90, 72*2, true, paint);
                 break;
             case 4:
-                resource.setImageResource(R.drawable.blue_d);
+                paint.setColor(Color.argb(192, 39, 37, 46));
+                canvas.drawArc(rectF, -90, 72*3, true, paint);
                 break;
             case 5:
-                resource.setImageResource(R.drawable.blue_e);
-                break;
-            case 6:
-                resource.setImageResource(R.drawable.blue_f);
-                break;
-            case 7:
-                resource.setImageResource(R.drawable.blue_g);
-                break;
-            case 8:
-                resource.setImageResource(R.drawable.blue_h);
-                break;
-            case 9:
-                resource.setImageResource(R.drawable.blue_i);
-                break;
-            case 10:
-                resource.setImageResource(R.drawable.blue_j);
-                break;
-            case 11:
-                resource.setImageResource(R.drawable.green_a);
-                break;
-            case 12:
-                resource.setImageResource(R.drawable.green_b);
-                break;
-            case 13:
-                resource.setImageResource(R.drawable.green_c);
-                break;
-            case 14:
-                resource.setImageResource(R.drawable.green_d);
-                break;
-            case 15:
-                resource.setImageResource(R.drawable.green_e);
-                break;
-            case 16:
-                resource.setImageResource(R.drawable.green_f);
-                break;
-            case 17:
-                resource.setImageResource(R.drawable.green_g);
-                break;
-            case 18:
-                resource.setImageResource(R.drawable.green_h);
-                break;
-            case 19:
-                resource.setImageResource(R.drawable.green_i);
-                break;
-            case 20:
-                resource.setImageResource(R.drawable.green_j);
-                break;
-            case 21:
-                resource.setImageResource(R.drawable.yellow_a);
-                break;
-            case 22:
-                resource.setImageResource(R.drawable.yellow_b);
-                break;
-            case 23:
-                resource.setImageResource(R.drawable.yellow_c);
-                break;
-            case 24:
-                resource.setImageResource(R.drawable.yellow_d);
-                break;
-            case 25:
-                resource.setImageResource(R.drawable.yellow_e);
-                break;
-            case 26:
-                resource.setImageResource(R.drawable.yellow_f);
-                break;
-            case 27:
-                resource.setImageResource(R.drawable.yellow_g);
-                break;
-            case 28:
-                resource.setImageResource(R.drawable.yellow_h);
-                break;
-            case 29:
-                resource.setImageResource(R.drawable.yellow_i);
-                break;
-            case 30:
-                resource.setImageResource(R.drawable.yellow_j);
-                break;
-            case 31:
-                resource.setImageResource(R.drawable.orange_a);
-                break;
-            case 32:
-                resource.setImageResource(R.drawable.orange_b);
-                break;
-            case 33:
-                resource.setImageResource(R.drawable.orange_c);
-                break;
-            case 34:
-                resource.setImageResource(R.drawable.orange_d);
-                break;
-            case 35:
-                resource.setImageResource(R.drawable.orange_e);
-                break;
-            case 36:
-                resource.setImageResource(R.drawable.orange_f);
-                break;
-            case 37:
-                resource.setImageResource(R.drawable.orange_g);
-                break;
-            case 38:
-                resource.setImageResource(R.drawable.orange_h);
-                break;
-            case 39:
-                resource.setImageResource(R.drawable.orange_i);
-                break;
-            case 40:
-                resource.setImageResource(R.drawable.orange_j);
-                break;
-            case 41:
-                resource.setImageResource(R.drawable.red_a);
-                break;
-            case 42:
-                resource.setImageResource(R.drawable.red_b);
-                break;
-            case 43:
-                resource.setImageResource(R.drawable.red_c);
-                break;
-            case 44:
-                resource.setImageResource(R.drawable.red_d);
-                break;
-            case 45:
-                resource.setImageResource(R.drawable.red_e);
-                break;
-            case 46:
-                resource.setImageResource(R.drawable.red_f);
-                break;
-            case 47:
-                resource.setImageResource(R.drawable.red_g);
-                break;
-            case 48:
-                resource.setImageResource(R.drawable.red_h);
-                break;
-            case 49:
-                resource.setImageResource(R.drawable.red_i);
-                break;
-            case 50:
-                resource.setImageResource(R.drawable.red_j);
-                break;
-            default:
-                resource.setImageResource(R.drawable.none_a);
+                paint.setColor(Color.argb(192, 39, 37, 46));
+                canvas.drawArc(rectF, -90, 72*4, true, paint);
                 break;
         }
     }
+
+
     //endregion
 
-    //region GET FILLABLE SEPARATOR
-    public void getFillableSeparator(ImageView resource, double step, int ID)
+    //region FILL SECTOR
+
+    public void fillSectors(ImageView tVisual, double currentHR,int totalHR)
     {
-        if(ID == 0*step) fillSeparators(resource, 0);
-        if(ID >= 1*step) fillSeparators(resource, 1);
-        if(ID >= 2*step) fillSeparators(resource, 2);
-        if(ID >= 3*step) fillSeparators(resource, 3);
-        if(ID >= 4*step) fillSeparators(resource, 4);
-        if(ID >= 5*step) fillSeparators(resource, 5);
-        if(ID >= 6*step) fillSeparators(resource, 6);
-        if(ID >= 7*step) fillSeparators(resource, 7);
-        if(ID >= 8*step) fillSeparators(resource, 8);
-        if(ID >= 9*step) fillSeparators(resource, 9);
-        if(ID >= 10*step) fillSeparators(resource, 10);
+        int startPoint = -90;
+        int endPoint = ((int)currentHR*360/totalHR)*2;
+        Bitmap bitmap = Bitmap.createBitmap(963,963, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.argb(255, 39, 37, 46));
+        canvas.drawPaint(paint);
+        paint.setAntiAlias(true);
+        paint.setColor(Color.argb(255, 117, 116, 127));
+        canvas.drawCircle(481, 481, 481, paint);
+        RectF rectF = new RectF(0, 0, 963, 963);
 
-        if(ID >= 11*step) fillSeparators(resource, 11);
-        if(ID >= 12*step) fillSeparators(resource, 12);
-        if(ID >= 13*step) fillSeparators(resource, 13);
-        if(ID >= 14*step) fillSeparators(resource, 14);
-        if(ID >= 15*step) fillSeparators(resource, 15);
-        if(ID >= 16*step) fillSeparators(resource, 16);
-        if(ID >= 17*step) fillSeparators(resource, 17);
-        if(ID >= 18*step) fillSeparators(resource, 18);
-        if(ID >= 19*step) fillSeparators(resource, 19);
-
-        if(ID >= 20*step) fillSeparators(resource, 20);
-        if(ID >= 21*step) fillSeparators(resource, 21);
-        if(ID >= 22*step) fillSeparators(resource, 22);
-        if(ID >= 23*step) fillSeparators(resource, 23);
-        if(ID >= 24*step) fillSeparators(resource, 24);
-        if(ID >= 25*step) fillSeparators(resource, 25);
-        if(ID >= 26*step) fillSeparators(resource, 26);
-        if(ID >= 27*step) fillSeparators(resource, 27);
-        if(ID >= 28*step) fillSeparators(resource, 28);
-        if(ID >= 29*step) fillSeparators(resource, 29);
-
-        if(ID >= 30*step) fillSeparators(resource, 30);
-        if(ID >= 31*step) fillSeparators(resource, 31);
-        if(ID >= 32*step) fillSeparators(resource, 32);
-        if(ID >= 33*step) fillSeparators(resource, 33);
-        if(ID >= 34*step) fillSeparators(resource, 34);
-        if(ID >= 35*step) fillSeparators(resource, 35);
-        if(ID >= 36*step) fillSeparators(resource, 36);
-        if(ID >= 37*step) fillSeparators(resource, 37);
-        if(ID >= 38*step) fillSeparators(resource, 38);
-        if(ID >= 39*step) fillSeparators(resource, 39);
-
-        if(ID >= 40*step) fillSeparators(resource, 40);
-        if(ID >= 41*step) fillSeparators(resource, 41);
-        if(ID >= 42*step) fillSeparators(resource, 42);
-        if(ID >= 43*step) fillSeparators(resource, 43);
-        if(ID >= 44*step) fillSeparators(resource, 44);
-        if(ID >= 45*step) fillSeparators(resource, 45);
-        if(ID >= 46*step) fillSeparators(resource, 46);
-        if(ID >= 47*step) fillSeparators(resource, 47);
-        if(ID >= 48*step) fillSeparators(resource, 48);
-        if(ID >= 49*step) fillSeparators(resource, 49);
-        if(ID >= 50*step) fillSeparators(resource, 50);
+        switch (targetZone){
+            case 1:
+                paint.setColor(getZoneColor(1));
+                canvas.drawArc(rectF, -90, endPoint -72*0, true, paint);
+                break;
+            case 2:
+                paint.setColor(getZoneColor(1));
+                canvas.drawArc(rectF, -90, 72, true, paint);
+                darkZone(paint, canvas, rectF, endPoint);
+                paint.setColor(getZoneColor(2));
+                canvas.drawArc(rectF, -18, endPoint -72*1, true, paint);
+                break;
+            case 3:
+                paint.setColor(getZoneColor(1));
+                canvas.drawArc(rectF, -90, 72, true, paint);
+                paint.setColor(getZoneColor(2));
+                canvas.drawArc(rectF, -18, 72, true, paint);
+                darkZone(paint, canvas, rectF, endPoint);
+                paint.setColor(getZoneColor(3));
+                canvas.drawArc(rectF, 54, endPoint -72*2, true, paint);
+                break;
+            case 4:
+                paint.setColor(getZoneColor(1));
+                canvas.drawArc(rectF, -90, 72, true, paint);
+                paint.setColor(getZoneColor(2));
+                canvas.drawArc(rectF, -18, 72, true, paint);
+                paint.setColor(getZoneColor(3));
+                canvas.drawArc(rectF, 54, 72, true, paint);
+                darkZone(paint, canvas, rectF, endPoint);
+                paint.setColor(getZoneColor(4));
+                canvas.drawArc(rectF, 126, endPoint -72*3, true, paint);
+                break;
+            case 5:
+                paint.setColor(getZoneColor(1));
+                canvas.drawArc(rectF, -90, 72, true, paint);
+                paint.setColor(getZoneColor(2));
+                canvas.drawArc(rectF, -18, 72, true, paint);
+                paint.setColor(getZoneColor(3));
+                canvas.drawArc(rectF, 54, 72, true, paint);
+                paint.setColor(getZoneColor(4));
+                canvas.drawArc(rectF, 126, 72, true, paint);
+                darkZone(paint, canvas, rectF, endPoint);
+                paint.setColor(getZoneColor(5));
+                canvas.drawArc(rectF, 198, endPoint -72*4, true, paint);
+                break;
+        }
+        tVisual.setImageBitmap(bitmap);
     }
+
     //endregion
 
     //region GET BORDER OF ZONES
 
-    public double getBorderOfZones(String zoneName, boolean low, boolean high)
+    public void getBorderOfZones()
     {
-        double lowBorder = 0, highBorder = 0, result = 0;
         pickHR = 220 - age;
-        if(low) {
-            switch (zoneName) {
-                case "warmup":
-                    lowBorder = getPercent(pickHR, 50);
-                    Log.d("ZONE: ", "" + lowBorder);
-                    break;
-                case "fitness":
-                    lowBorder = getPercent(pickHR, 60);
-                    break;
-                case "endurance":
-                    lowBorder = getPercent(pickHR, 70);
-                    break;
-                case "perfomance":
-                    lowBorder = getPercent(pickHR, 80);
-                    break;
-                case "maximum":
-                    lowBorder = getPercent(pickHR, 90);
-                    break;
-                default:
-                    break;
-            }
-            result = lowBorder;
+
+        blue_zone_low = getPercent(pickHR, 50);
+        blue_zone_high = getPercent(pickHR, 60);
+
+        green_zone_low = getPercent(pickHR, 60);
+        green_zone_high = getPercent(pickHR, 70);
+
+        yellow_zone_low = getPercent(pickHR, 70);
+        yellow_zone_high = getPercent(pickHR, 80);
+
+        orange_zone_low = getPercent(pickHR, 80);
+        orange_zone_high = getPercent(pickHR, 90);
+
+        red_zone_low = getPercent(pickHR, 90);
+        red_zone_high = getPercent(pickHR, 100);
+
+    }
+
+    //endregion
+
+    //region GET ZONE COLOR
+
+    private int getZoneColor(int targetZone)
+    {
+        int targetColor = Color.WHITE;
+        switch(targetZone){
+            case 1:
+                targetColor = Color.argb(255, 52, 152, 219);
+                break;
+            case 2:
+                targetColor = Color.argb(255, 46, 204, 113);
+                break;
+            case 3:
+                targetColor = Color.argb(255, 241, 196, 15);
+                break;
+            case 4:
+                targetColor = Color.argb(255, 230, 126, 34);
+                break;
+            case 5:
+                targetColor = Color.argb(255, 231, 76, 60);
+                break;
         }
-        if(high) {
-            switch (zoneName) {
-                case "warmup":
-                    highBorder = getPercent(pickHR, 60);
-                    Log.d("ZONE: ", "" + highBorder);
-                    break;
-                case "fitness":
-                    highBorder = getPercent(pickHR, 70);
-                    break;
-                case "endurance":
-                    highBorder = getPercent(pickHR, 80);
-                    break;
-                case "perfomance":
-                    highBorder = getPercent(pickHR, 90);
-                    break;
-                case "maximum":
-                    highBorder = getPercent(pickHR, 100);
-                    break;
-                default:
-                    break;
-            }
-            result = highBorder;
-        }
-        return result;
+        return targetColor;
+    }
+
+
+    //endregion
+
+    //region GET TARGET ZONE
+
+    public int getTargetZone(double origin)
+    {
+        if ((origin >= blue_zone_low) && (origin <= blue_zone_high)) targetZone = 1;
+        else if ((origin >= green_zone_low) && (origin <= green_zone_high)) targetZone = 2;
+        else if ((origin >= yellow_zone_low) && (origin <= yellow_zone_high)) targetZone = 3;
+        else if ((origin >= orange_zone_low) && (origin <= orange_zone_high)) targetZone = 4;
+        else if ((origin >= red_zone_low) && (origin <= red_zone_high)) targetZone = 5;
+        return targetZone;
     }
 
     //endregion
 
     //region GET AUDIO ZONES
 
-    private void getAudioZones(Activity caller, String zoneName, MediaPlayer zoneAudio)
+    private MediaPlayer getAudioZones(Activity caller)
     {
-        switch(zoneName) {
-            case "warmup":
+        switch(targetZone) {
+            case 1:
                 zoneAudio = MediaPlayer.create(caller, R.raw.blue_zone);
                 break;
-            case "fitness":
+            case 2:
                 zoneAudio = MediaPlayer.create(caller, R.raw.green_zone);
                 break;
-            case "endurance":
+            case 3:
                 zoneAudio = MediaPlayer.create(caller, R.raw.yellow_zone);
                 break;
-            case "perfomance":
+            case 4:
                 zoneAudio = MediaPlayer.create(caller, R.raw.orange_zone);
                 break;
-            case "maximum":
+            case 5:
                 zoneAudio = MediaPlayer.create(caller, R.raw.red_zone);
                 break;
             default:
                 break;
         }
+        return zoneAudio;
     }
 
     //endregion
@@ -345,14 +234,37 @@ public class zonesLibrary {
     }
 
 
-    private void zoneAlarm(Activity caller, double origin, double low, double high, String zoneName)
+    public void zoneAlarm(Activity caller, double origin)
     {
-        MediaPlayer zoneAudio = MediaPlayer.create(caller, R.raw.blue_zone);;
-        if(getZone(zoneName) != currentZone) {
-            if ((origin >= low) && (origin <= high)) {
-                getAudioZones(caller, zoneName, zoneAudio);
-                zoneAudio.start();
-                currentZone = getZone(zoneName);
+        if(getTargetZone(origin) != currentZone) {
+            switch(targetZone) {
+                case 1:
+                    zoneAudio = MediaPlayer.create(caller, R.raw.blue_zone);
+                    zoneAudio.start();
+                    currentZone = getTargetZone(origin);
+                    break;
+                case 2:
+                    zoneAudio = MediaPlayer.create(caller, R.raw.green_zone);
+                    zoneAudio.start();
+                    currentZone = getTargetZone(origin);
+                    break;
+                case 3:
+                    zoneAudio = MediaPlayer.create(caller, R.raw.yellow_zone);
+                    zoneAudio.start();
+                    currentZone = getTargetZone(origin);
+                    break;
+                case 4:
+                    zoneAudio = MediaPlayer.create(caller, R.raw.orange_zone);
+                    zoneAudio.start();
+                    currentZone = getTargetZone(origin);
+                    break;
+                case 5:
+                    zoneAudio = MediaPlayer.create(caller, R.raw.red_zone);
+                    zoneAudio.start();
+                    currentZone = getTargetZone(origin);
+                    break;
+                default:
+                    break;
             }
         }
     }

@@ -43,8 +43,10 @@ import java.util.List;
 import com.saintcactus.android.hope.R;
 import com.saintcactus.android.hope.adapters.BleServicesAdapter;
 import com.saintcactus.android.hope.adapters.BleServicesAdapter.OnServiceItemClickListener;
+import com.saintcactus.android.hope.debugs.developmentRoom;
 import com.saintcactus.android.hope.demo.DemoHeartRateSensorActivity;
 import com.saintcactus.android.hope.demo.DemoSensorActivity;
+import com.saintcactus.android.hope.libraries.zonesLibrary;
 import com.saintcactus.android.hope.sensor.BleHeartRateSensor;
 import com.saintcactus.android.hope.sensor.BleSensor;
 import com.saintcactus.android.hope.sensor.BleSensors;
@@ -57,6 +59,9 @@ import com.saintcactus.android.hope.sensor.BleSensors;
  */
 public class DeviceServicesActivity extends Activity {
     private final static String TAG = DeviceServicesActivity.class.getSimpleName();
+    TextView warmup_test, fitness_test, endurance_test, perfomance_test, maximum_test;
+    double warmup_high, warmup_low, fitness_high, fitness_low, endurance_high, endurance_low, perfomance_high, perfomance_low, maximum_high, maximum_low, step;
+    final zonesLibrary testZone = new zonesLibrary();
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
@@ -127,6 +132,7 @@ public class DeviceServicesActivity extends Activity {
 				enableHeartRateSensor();
             } else if (BleService.ACTION_DATA_AVAILABLE.equals(action)) {
 				displayData(intent.getStringExtra(BleService.EXTRA_SERVICE_UUID), intent.getStringExtra(BleService.EXTRA_TEXT));
+                //testZone.getFillableSeparator(mImageView, step, testZone.getSeparatorsArray().indexOf(Integer.parseInt(intent.getStringExtra(BleService.EXTRA_TEXT))));
 
             }
         }
@@ -233,8 +239,44 @@ public class DeviceServicesActivity extends Activity {
         deviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         deviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
-        mImageView = (ImageView) findViewById(R.id.sector_test);
-        mImageView.setImageResource(R.drawable.sector_test);
+        mImageView = (ImageView) findViewById(R.id.sector_none);
+        mImageView.setImageResource(R.drawable.none_a);
+
+        warmup_test = (TextView)findViewById(R.id.warmup_test);
+        fitness_test = (TextView) findViewById(R.id.fitness_test);
+        endurance_test = (TextView) findViewById(R.id.endurance_test);
+        perfomance_test = (TextView) findViewById(R.id.perfomance_test);
+        maximum_test = (TextView) findViewById(R.id.maximum_test);//
+
+        testZone.setAge(60);
+
+        testZone.getBorderOfZones();
+
+        warmup_low = testZone.blue_zone_low;
+        warmup_high = testZone.blue_zone_high;
+
+        fitness_low = testZone.green_zone_low;
+        fitness_high = testZone.green_zone_high;
+
+        endurance_low = testZone.yellow_zone_low;
+        endurance_high = testZone.yellow_zone_high;
+
+        perfomance_low = testZone.orange_zone_low;
+        perfomance_high = testZone.orange_zone_high;
+
+        maximum_low = testZone.red_zone_low;
+        maximum_high = testZone.red_zone_high;
+
+
+        warmup_test.setText("" + String.format("%.0f", warmup_low) + ", " + String.format("%.0f", warmup_high) );
+        fitness_test.setText("" + String.format("%.0f", fitness_low) + ", " + String.format("%.0f", fitness_high) );
+        endurance_test.setText("" + String.format("%.0f", endurance_low) + ", " + String.format("%.0f", endurance_high) );
+        perfomance_test.setText("" + String.format("%.0f", perfomance_low) + ", " + String.format("%.0f", perfomance_high) );
+        maximum_test.setText("" + String.format("%.0f", maximum_low) + ", " + String.format("%.0f", maximum_high) );
+
+        testZone.createSeparatorsArray((int)warmup_low,(int)maximum_high);
+
+        step = (warmup_high - warmup_low) / 10;
 
 
         // Sets up UI references.
@@ -333,6 +375,9 @@ public class DeviceServicesActivity extends Activity {
 		if (data != null) {
 			if (uuid.equals(BleHeartRateSensor.getServiceUUIDString())) {
 				heartRateField.setText(data);
+                testZone.getTargetZone(Double.parseDouble(data));
+                testZone.fillSectors(mImageView, testZone.getSeparatorsArray().indexOf(Integer.parseInt(data)), (int) maximum_high);
+                testZone.zoneAlarm(this, Integer.parseInt(data));
 
 			} else {
 				dataField.setText(data);

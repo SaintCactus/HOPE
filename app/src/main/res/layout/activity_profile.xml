@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#27252e">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="67dp"
+        android:id="@+id/contact_first"
+        android:background="@drawable/contact_add"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_alignBottom="@+id/contact_first"
+        android:layout_toEndOf="@+id/contact_first"
+        android:layout_marginStart="21dp"
+        android:id="@+id/contact_second"
+        android:background="@drawable/contact_add" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_alignTop="@+id/contact_second"
+        android:layout_toEndOf="@+id/contact_second"
+        android:layout_marginStart="21dp"
+        android:id="@+id/contact_third"
+        android:background="@drawable/contact_add" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_alignBottom="@+id/contact_third"
+        android:layout_toEndOf="@+id/contact_third"
+        android:layout_marginStart="21dp"
+        android:id="@+id/contact_fourth"
+        android:background="@drawable/contact_add" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_below="@+id/contact_first"
+        android:layout_alignStart="@+id/contact_first"
+        android:layout_marginTop="27dp"
+        android:id="@+id/contact_fivth"
+        android:background="@drawable/contact_add" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_alignBottom="@+id/contact_fivth"
+        android:layout_toStartOf="@+id/contact_third"
+        android:id="@+id/contact_sixth"
+        android:background="@drawable/contact_add" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_alignBottom="@+id/contact_sixth"
+        android:layout_toStartOf="@+id/contact_fourth"
+        android:id="@+id/contact_seventh"
+        android:background="@drawable/contact_add" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_add"
+        android:layout_alignTop="@+id/contact_seventh"
+        android:layout_alignStart="@+id/contact_fourth"
+        android:id="@+id/contact_eighth"
+        android:background="@drawable/contact_add" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/panel_backward"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/contact_fivth"
+        android:layout_marginBottom="14dp"
+        android:id="@+id/backward"
+        android:background="@drawable/panel_backward" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/contact_edit"
+        android:layout_alignTop="@+id/backward"
+        android:layout_alignStart="@+id/contact_sixth"
+        android:id="@+id/imageButton11"
+        android:background="@drawable/contact_edit" />
+
+    <TextView
+        android:text="0/8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profileQuantity"
+        android:textColor="@android:color/background_light"
+        android:textSize="36sp"
+        android:layout_marginBottom="12dp"
+        android:layout_above="@+id/contact_second"
+        android:layout_alignStart="@+id/contact_second"
+        android:layout_marginStart="47dp" />
+</RelativeLayout>
