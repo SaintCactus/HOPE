@@ -57,6 +57,30 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".frames.newProfileFrame"
+            android:label="Add new contact">
+            <intent-filter>
+                <action android:name="android.intent.action.newprofile" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".frames.editProfileFrame"
+            android:label="Edit contact">
+            <intent-filter>
+                <action android:name="android.intent.action.editprofile" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".frames.chooseProfileFrame"
+            android:label="Choose to edit">
+            <intent-filter>
+                <action android:name="android.intent.action.chooseprofile" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".debugs.developmentRoom"
             android:label="Development Room"
             android:screenOrientation="portrait">

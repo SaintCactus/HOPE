@@ -5,7 +5,7 @@ package com.saintcactus.android.hope.libraries;
  */
 
 public class profile {
-    private int profileQuantity, profileAge, profileColor;
+    private int profileQuantity = 0, profileAge, profileColor;
 
     public void setProfileQuantity(int profileQuantity)
     {
